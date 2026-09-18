@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     "rest_framework",
     "api",
+    "corsheaders",
     "accounts",
     'django.contrib.staticfiles',
 ]
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = 'stock_prediction_main.urls'
@@ -129,3 +131,7 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173'
+]
