@@ -1,0 +1,37 @@
+pip install djangorestframework-simplejwt
+
+
+In settings.py, add rest_framework_simplejwt.authentication.JWTAuthentication 
+to the list of authentication classes:
+
+
+REST_FRAMEWORK = {
+  
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+      
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+    
+}
+
+Also, in your root urls.py file (or any other url config), include routes for Simple JWT’s TokenObtainPairView and TokenRefreshView views:
+
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
+urlpatterns = [
+ 
+    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+
+]
+
+in the settings
+
+INSTALLED_APPS = [
+    ...
+    'rest_framework_simplejwt',
+    ...
+]
